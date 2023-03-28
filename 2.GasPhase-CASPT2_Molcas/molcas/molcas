@@ -1,0 +1,8 @@
+#!/bin/bash 
+
+cp /home/marlenne/bin/molcas.sh .
+sed -i "s/JOB/$1/g" molcas.sh
+
+qsub molcas.sh
+rm molcas.sh
+

@@ -1,0 +1,42 @@
+
+&gateway
+Coord=$HomeDir/coord.xyz
+Basis=ANO-S-VDZP 
+RICD
+CDTH=1.0D-08
+Group=NoSym
+
+&seward
+doana
+
+>>>COPY $HomeDir/cas2.RasOrb INPORB
+
+&RASSCF 
+spin
+1
+nActEl
+14 0 0
+Inactive
+ 26
+Ras2
+10
+LUMORB
+CIRoot
+6 6 1
+
+ &caspt2
+IMAG
+0.2
+IPEA
+0.0
+xmul=all
+convergence
+1.0d-08
+thresholds
+1.0d-9 1.0d-07
+grdt
+rlxroot
+1
+
+&ALASKA
+

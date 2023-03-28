@@ -1,0 +1,14 @@
+ &gateway
+   coord=$HomeDir/timina_NOopt.xyz
+   basis=6-31Gdp
+   group=nosymm
+   RICD
+
+>>> Do While
+   &seward
+      DoAnal
+   &scf
+   &slapaf
+>>> EndDo
+
+

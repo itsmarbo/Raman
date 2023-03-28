@@ -1,0 +1,13 @@
+ &gateway
+    coord=$HomeDir/coord.xyz
+    basis=ANO-L-VDZP
+    group=nosymm
+    RICD
+
+
+ &seward
+DoAnal
+
+ &scf
+
+
