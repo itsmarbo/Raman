@@ -1,0 +1,14 @@
+ &gateway
+   coord=$HomeDir/thymine_planar_fabrizio.xyz
+   basis=6-31G**
+   group=nosymm
+   RICD
+
+>>> Do While
+   &seward
+      DoAnal
+   &scf
+   &slapaf
+>>> EndDo
+
+
