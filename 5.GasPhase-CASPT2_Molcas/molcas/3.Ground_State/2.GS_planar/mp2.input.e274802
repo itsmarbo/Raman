@@ -1,0 +1,9 @@
+/var/spool/torque/mom_priv/jobs/274802.qcexmaster.SC: línea 29: TempDir=/scr/marlenne/${PBS_mp2.inputID}_$Project: sustitución errónea
+mkdir: falta un operando
+Pruebe 'mkdir --help' para más información.
+mkdir: no se puede crear el directorio «/Work»: Permiso denegado
+/var/spool/torque/mom_priv/jobs/274802.qcexmaster.SC: línea 34: cd: /Work: No existe el fichero o el directorio
+/var/spool/torque/mom_priv/jobs/274802.qcexmaster.SC: línea 37: /mp2.input.log: Permiso denegado
+cp: no se puede efectuar `stat' sobre '/*.log': No existe el fichero o el directorio
+cp: no se puede efectuar `stat' sobre '/*.molden': No existe el fichero o el directorio
+/var/spool/torque/mom_priv/jobs/274802.qcexmaster.SC: línea 42: cd: OLDPWD no está definido

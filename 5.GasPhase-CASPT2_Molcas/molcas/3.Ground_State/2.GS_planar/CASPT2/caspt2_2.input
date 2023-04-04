@@ -1,0 +1,43 @@
+*
+*CASPT2 calculation of the ground state 
+*
+&GATEWAY
+   coord=$HomeDir/scf.Opt.xyz
+   basis=6-31G**
+   group=nosymm
+   RICD
+
+&SEWARD
+   DoAnal
+
+*&SCF
+
+*>>>COPY $HomeDir/caspt2.RasOrb INPORB
+
+&RASSCF &END
+Title
+ Thymine
+Spin
+ 1
+Nactel
+ 14 0 0
+Inactive
+ 26
+Ras2
+ 10
+CiRoot
+ 5 5 1
+Lumorb
+Levs
+ 0.8
+Thrs
+1.0D-06 1.0D-02 1.0D-02
+Alter
+2; 1 25 28; 1 36 40
+
+&CASPT2
+imag=0.2
+ipea=0.0
+multistate=all
+nomult
+
