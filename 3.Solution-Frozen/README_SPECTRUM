@@ -1,0 +1,68 @@
+----------------------------------------------------------------
+				README
+----------------------------------------------------------------
+Here you will find all the files used to run calculations.
+
+The outputs of the FCC3 are three:
+
+	--------------------------------RR----------------------------------
+	1. snap*.S1_RR_Spectrum_2D.dat_31	-> Raman Excitation Profile
+	2. snap*.S1_RR_convoluted_wI34488_frozen.dat	-> Raman Spectrum
+	--------------------------------OPA---------------------------------
+	3. ABS_spec_Int_TD_snap*.S1	                -> ABS Spectrum
+
+
+Each snap has its own directory
+
+	directory: snap*.S1
+        files contained: HuangRhys.dat
+			RR_Spectrum_VertE.dat_*      
+			duschinsky.dat		             							snap*.S1.ABS.frozen.out         							snap*.S1_RR_convoluted_wI34488_frozen.dat
+			HuangRhys_OPA.dat
+	                RR_convoluted_wI34488.dat      
+			duschinsky_OPA.dat         
+			snap*.S1.OPA.inp                
+			spec_Int_TD.dat
+			HuangRhys_RR.dat              								Transition_Polarizability.dat  
+			duschinsky_RR.dat          
+			snap*.S1.OPA.out                	
+			spec_LS_TD.dat
+			RR_Spectrum_2D.dat
+	                corr.dat
+                        eldip_snap*.S1_fchk      
+			snap*.S1.fcc                    
+			timecorr_P.dat
+			RR_Spectrum_2D.dat_*      
+		        corr_00.dat  
+                        freq_s0                    
+		 	snap*.S1.fchk
+			RR_Spectrum_2D.dat_31 
+	                displacement.dat               
+			get_exc_prof               
+			snap*.S1.inp
+			RR_Spectrum_2D_hwhm0.120.dat  
+			displacement_OPA.dat           
+			magdip_snap*.S1_fchk     
+			snap*.S1.out
+			RR_Spectrum_VertE.dat         
+			displacement_RR.dat            
+			snap*.S1.ABS.frozen.inp  								snap*.S1_RR_Spectrum_2D.dat_31
+
+Outside each directory, there are copies of the files, with the purpose to simplify the calculations
+
+        ----------------------GNUPLOT SCRIPTS----------------------
+			snap*.S1.REP_frozen.gnuplot
+			snap*.S1.RamanSpectra_frozen.gnuplot
+	----------------------GNUPLOT PNGs----------------------
+			snap*.S1.RamanSpectra_frozen.png
+			snap*.S1.REP_frozen.png
+	----------------------GNUPLOT DATA----------------------
+			snap*.S1_RR_Spectrum_2D.dat_31
+			snap*.S1_RR_convoluted_wI34488_frozen.dat
+	----------------------FCC FILES TO RUN----------------------
+			snap*.S1.chk
+			snap*.S1.com
+			snap*.S1.log
+			snap*.S1.out
+
+
