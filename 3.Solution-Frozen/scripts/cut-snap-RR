@@ -1,0 +1,43 @@
+#!/bin/bash
+
+Eecut1='290'
+Eecut2='275'
+Eecut3='266'
+Eecut4='250'
+Eecut5='233'
+Edelta="0.5"
+HWHM="15"
+
+Cecut1=$(awk -v Eecut1="$Eecut1" -v Edelta="$Edelta"  'BEGIN {print 8064.51612903 * (1240 / Eecut1 + Edelta)}' END)
+Cecut2=$(awk -v Eecut2="$Eecut2" -v Edelta="$Edelta"  'BEGIN {print 8064.51612903 * (1240 / Eecut2 + Edelta)}' END)
+Cecut3=$(awk -v Eecut3="$Eecut3" -v Edelta="$Edelta"  'BEGIN {print 8064.51612903 * (1240 / Eecut3 + Edelta)}' END)
+Cecut4=$(awk -v Eecut4="$Eecut4" -v Edelta="$Edelta"  'BEGIN {print 8064.51612903 * (1240 / Eecut4 + Edelta)}' END)
+Cecut5=$(awk -v Eecut5="$Eecut5" -v Edelta="$Edelta"  'BEGIN {print 8064.51612903 * (1240 / Eecut5 + Edelta)}' END)
+
+
+ mkdir RR_S1_convolut_${Cecut1}  RR_S1_convolut_${Cecut2}  RR_S1_convolut_${Cecut3} RR_S1_convolut_${Cecut4}  RR_S1_convolut_${Cecut5};
+
+for ((i = 0; i <=3; i = i + 1));
+do
+
+
+/home/javier/bin/convolute_RR -f RR_Spectrum_2D.dat_$(printf "%03d" $i) -type 2D -wI $Cecut1 -hwhm $HWHM -brd Gau;
+mv RR_convoluted_wI*.dat  RR_convoluted_$(printf "%03d" $i)_wI${Cecut1}.dat;
+/home/javier/bin/convolute_RR -f RR_Spectrum_2D.dat_$(printf "%03d" $i) -type 2D -wI $Cecut2 -hwhm $HWHM -brd Gau;
+mv RR_convoluted_wI*.dat  RR_convoluted_$(printf "%03d" $i)_wI${Cecut2}.dat;
+/home/javier/bin/convolute_RR -f RR_Spectrum_2D.dat_$(printf "%03d" $i) -type 2D -wI $Cecut3 -hwhm $HWHM -brd Gau;
+mv RR_convoluted_wI*.dat  RR_convoluted_$(printf "%03d" $i)_wI${Cecut3}.dat;
+/home/javier/bin/convolute_RR -f RR_Spectrum_2D.dat_$(printf "%03d" $i) -type 2D -wI $Cecut4 -hwhm $HWHM -brd Gau;
+mv RR_convoluted_wI*.dat RR_convoluted_$(printf "%03d" $i)_wI${Cecut4}.dat;
+/home/javier/bin/convolute_RR -f RR_Spectrum_2D.dat_$(printf "%03d" $i) -type 2D -wI $Cecut5 -hwhm $HWHM -brd Gau;
+mv RR_convoluted_wI*.dat  RR_convoluted_$(printf "%03d" $i)_wI${Cecut5}.dat;
+
+mv *_wI${Cecut1}.dat RR_S1_convolut_${Cecut1}/.;
+mv *_wI${Cecut2}.dat RR_S1_convolut_${Cecut2}/.;
+mv *_wI${Cecut3}.dat RR_S1_convolut_${Cecut3}/.;
+mv *_wI${Cecut4}.dat RR_S1_convolut_${Cecut4}/.;
+mv *_wI${Cecut5}.dat RR_S1_convolut_${Cecut5}/.;
+
+done;
+
+

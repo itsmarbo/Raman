@@ -1,0 +1,36 @@
+#!/bin/tcsh  -f
+#
+#   sets Gaussian version
+#   SSE4: for all sole (12 procs), baleno1-4 (16 procs)  
+#  setenv GAUSS_EXEDIR /shared/gaussian/g16.b01/SSE4/g16/ 
+#   AVX2: for baleno5-8 (16 procs)  adn all the rest 
+setenv GAUSS_EXEDIR /shared/gaussian/g16.b01/AVX2/g16/ 
+#
+#   sets remote working and scratch directories (on computing node) 
+set VALUE = `whoami`
+set NUM = `date +%H%M%S`
+setenv WORKDIR /scratch/marlene/GAU.$NUM.$1
+setenv GAUSS_SCRDIR /scratch/marlene/SCRGAU.$NUM.$1
+test -d $WORKDIR || mkdir $WORKDIR
+test -d $GAUSS_SCRDIR   || mkdir $GAUSS_SCRDIR
+#
+#   sets local directories and echoes 
+set QUI = `pwd`
+echo $HOST
+echo $WORKDIR $QUI
+#
+# copy files on remote dir
+cp $QUI/$1.com $WORKDIR/.
+cd $WORKDIR
+#
+#   lauch Gaussian (AVX2 option for baleno5 or superior) 
+/shared/gaussian/g16.b01/AVX2/g16/g16 < $WORKDIR/$1.com > $WORKDIR/$1.log
+#
+#   recovers all files on local (mcp) directory
+cp  $WORKDIR/$1.log $QUI/.
+cp  $WORKDIR/*.chk $QUI/.
+cp  $WORKDIR/*.* $QUI/.
+#
+rm -rf $WORKDIR
+rm -rf $GAUSS_SCRDIR
+#

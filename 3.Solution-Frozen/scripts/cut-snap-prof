@@ -1,0 +1,32 @@
+#!/bin/bash
+
+
+mode="2"
+
+
+
+for ((i = 0; i <=3; i = i + 1));
+do
+
+file=RR_Spectrum_2D.dat_$(printf "%03d" $i)
+freqfile=RR_Spectrum_VertE.dat_$(printf "%03d" $i)
+
+sed  "1,4d" $freqfile > RR_Spectrum_VertE.dat_freq_$(printf "%03d" $i)
+awk '{print $1}' $1 RR_Spectrum_VertE.dat_freq_$(printf "%03d" $i) > freq_$(printf "%03d" $i)
+
+
+
+grep "$(echo $(   (sed -n ""$mode" p" freq_$(printf "%03d" $i) )))" RR_Spectrum_2D.dat_$(printf "%03d" $i) | awk '{printf "%12s %15s \n", $1 = $2, $2 = $3}' > profile_"$mode"_$(printf "%03d" $i)
+
+
+
+
+
+
+
+
+done;
+
+
+
+
