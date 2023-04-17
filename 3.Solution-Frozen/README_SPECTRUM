@@ -6,7 +6,7 @@ Here you will find all the files used to run calculations.
 The outputs of the FCC3 are three:
 
 	--------------------------------RR----------------------------------
-	1. snap*.S1_RR_Spectrum_2D.dat_31	-> Raman Excitation Profile
+	1. snap*.S1_RR_Spectrum_2D.dat_31	        -> Raman Excitation Profile
 	2. snap*.S1_RR_convoluted_wI34488_frozen.dat	-> Raman Spectrum
 	--------------------------------OPA---------------------------------
 	3. ABS_spec_Int_TD_snap*.S1	                -> ABS Spectrum
@@ -17,13 +17,16 @@ Each snap has its own directory
 	directory: snap*.S1
         files contained: HuangRhys.dat
 			RR_Spectrum_VertE.dat_*      
-			duschinsky.dat		             							snap*.S1.ABS.frozen.out         							snap*.S1_RR_convoluted_wI34488_frozen.dat
+			duschinsky.dat		             							
+			snap*.S1.ABS.frozen.out         							
+			snap*.S1_RR_convoluted_wI34488_frozen.dat
 			HuangRhys_OPA.dat
 	                RR_convoluted_wI34488.dat      
 			duschinsky_OPA.dat         
 			snap*.S1.OPA.inp                
 			spec_Int_TD.dat
-			HuangRhys_RR.dat              								Transition_Polarizability.dat  
+			HuangRhys_RR.dat              								
+			Transition_Polarizability.dat  
 			duschinsky_RR.dat          
 			snap*.S1.OPA.out                	
 			spec_LS_TD.dat
@@ -46,7 +49,8 @@ Each snap has its own directory
 			snap*.S1.out
 			RR_Spectrum_VertE.dat         
 			displacement_RR.dat            
-			snap*.S1.ABS.frozen.inp  								snap*.S1_RR_Spectrum_2D.dat_31
+			snap*.S1.ABS.frozen.inp  								
+			snap*.S1_RR_Spectrum_2D.dat_31
 
 Outside each directory, there are copies of the files, with the purpose to simplify the calculations
 
