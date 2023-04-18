@@ -1,0 +1,52 @@
+*
+* CASPT2 for Thymine focused on the 2 ES first bright
+*            with Hessians and Gradients
+*
+&GATEWAY
+    Coord=$HomeDir/scf.Opt.xyz
+    Basis=6-31G** 
+    RICD
+    CDTH=1.0D-08
+    Group=NoSym
+
+&SEWARD
+DoAna 
+
+*>>>COPY $HomeDir/cas2.RasOrb INPORB
+
+&RASSCF
+Title
+    Thymine 2 ES first bright state
+spin
+ 1
+Nactel
+ 14 0 0
+Inactive
+ 26
+Ras2
+ 10
+LUMORB
+CIRoot
+6 6 1
+
+&CASPT2
+IMAG
+ 0.2
+IPEA
+ 0.0
+xmul=all
+convergence
+ 1.0d-08
+thresholds
+ 1.0d-9 1.0d-07
+grdt
+rlxroot
+ 3
+
+&ALASKA
+
+&MCKINLEY
+Perturbation
+Hessian
+SHOWHessian
+
