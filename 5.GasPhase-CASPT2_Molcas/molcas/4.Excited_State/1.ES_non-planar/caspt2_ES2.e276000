@@ -1,0 +1,21 @@
+Note: The following floating-point exceptions are signalling: IEEE_UNDERFLOW_FLAG IEEE_DENORMAL
+Note: The following floating-point exceptions are signalling: IEEE_UNDERFLOW_FLAG IEEE_DENORMAL
+[ process      0]: xquit (rc =    128): _INTERNAL_ERROR_
+
+Program aborted. Backtrace:
+#0  0x7f9ae4c03640 in ???
+#1  0x7f9ae4c04134 in ???
+#2  0x7f9ae4d7ef08 in ???
+#3  0x6051ca in ???
+#4  0x548d6c in ???
+#5  0x541198 in ???
+#6  0x541535 in ???
+#7  0x4d3b05 in ???
+#8  0x448b2c in ???
+#9  0x403d16 in ???
+#10  0x403b50 in ???
+#11  0x7f9ae40a4349 in ???
+#12  0x403b99 in ???
+	at ../sysdeps/x86_64/start.S:120
+#13  0xffffffffffffffff in ???
+cp: no se puede efectuar `stat' sobre '/scr/marlenne/_caspt2_ES2/*.molden': No existe el fichero o el directorio
