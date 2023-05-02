@@ -1,0 +1,33 @@
+ &gateway
+    coord=$HomeDir/coord.xyz
+    basis=6-31G**
+    group=nosymm
+    RICD
+
+
+ &seward
+DoAnal
+
+ &scf
+
+ &RASSCF &END
+Thymine_non-planar_Ground_State
+ State Average (SA) CASSCF using Cs Symm.
+Spin
+ 1
+Nactel
+ 14 0 0
+Inactive
+ 26
+Ras2
+ 10
+CiRoot
+ 5 5 1
+Lumorb
+Levs
+ 0.8
+Thrs
+1.0D-06 1.0D-02 1.0D-02
+End of Input
+
+
