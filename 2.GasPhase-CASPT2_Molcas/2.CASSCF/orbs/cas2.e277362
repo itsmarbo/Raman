@@ -1,0 +1,3 @@
+cp: no se puede efectuar `stat' sobre '/scr/marlenne/_cas2/*.molden': No existe el fichero o el directorio
+cp: no se puede efectuar `stat' sobre '/scr/marlenne/_cas2/*.h5': No existe el fichero o el directorio
+cp: no se puede efectuar `stat' sobre '/scr/marlenne/_cas2/*.UnSym': No existe el fichero o el directorio

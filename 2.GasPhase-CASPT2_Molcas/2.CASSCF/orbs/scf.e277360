@@ -1,0 +1,5 @@
+mkdir: no se puede crear el directorio «/scr/marlenne/_scf»: El fichero ya existe
+mkdir: no se puede crear el directorio «/scr/marlenne/_scf/Work»: El fichero ya existe
+cp: no se puede efectuar `stat' sobre '/scr/marlenne/_scf/*.molden': No existe el fichero o el directorio
+cp: no se puede efectuar `stat' sobre '/scr/marlenne/_scf/*.h5': No existe el fichero o el directorio
+cp: no se puede efectuar `stat' sobre '/scr/marlenne/_scf/*.UnSym': No existe el fichero o el directorio

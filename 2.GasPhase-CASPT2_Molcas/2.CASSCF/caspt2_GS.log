@@ -1,0 +1,1218 @@
+   This run of MOLCAS is using the pymolcas driver
+
+                             OPE
+                             OPE          NMOL  CASOP  ENMOLC A   SO
+                 OPE        NMOLC        AS  OP EN  MO LC     AS  OP
+                OPENM       OL CA        SO  PE NM  OL CA     SOP EN
+                OP EN      MO   LC       AS  OP ENMOL  CASO   PENMOL
+                OP  EN     MO   LC       AS  OP EN     MO     LC ASO
+               OP   E  NMOL  C  AS       OP  EN MO     LC     AS  OP
+               OP  E   NMO   LC AS        OPEN  MO     LCASOP EN   M
+               O  PEN   MO  LCA  SO
+            OPE   NMO   L   CAS    OP
+        OPENMOL  CASOP     ENMOL   CASOPE
+     OPENMOLCA   SOPENMOLCASOPEN   MOLCASOPE
+    OPENMOLCAS   OP           EN   MOL    CAS
+    OPENMOLCAS       OP  ENM        O     LCA
+    OPENMOLCAS    OPEN  MOLCASO     P  E  NMO
+    OPENMOLCAS     OP               E  N  MOL
+    OPENMOLCA   SO           PENM   O  L  CAS    OPEN    MO    LCAS
+    OPENMOLCA   SOP           ENM   O  L  CAS   OP  EN  MOLC  AS   O
+    OPENMOLCA   SOPE           NM      O  LCA   S      OP  EN MO
+    OPENMOLC                AS         O  PEN   M      OL  CA  SOPE
+    OPENMO        LCASOPE  NMOL        C  ASO   P      ENMOLC     AS
+    OPE     NMO      LCA  SO     P     E   NM   OL  CA SO  PE N   MO
+          OPENMOLCA            SOPE   NMO        LCAS  O    P  ENMO
+     OPENMOLCASOPENMOLCASOPENMOLCASOPENMOLCA
+        OPENMOLCASOPENMOLCASOPENMOLCASOPE
+            OPENMOLCASOPENMOLCASOPENM
+               OPENMOLCASOPENMOLCA        version: 22.02
+                   OPENMOLCASO
+                       OPE                tag: 1-g9a97a9f70
+
+ OpenMolcas is free software; you can redistribute it and/or modify it
+ under the terms of the GNU Lesser General Public License version 2.1.
+ OpenMolcas is distributed in the hope that it will be useful, but it
+ is provided "as is" and without any express or implied warranties.
+ For more details see the full text of the license in the file
+ LICENSE or in <http://www.gnu.org/licenses/>.
+
+                 Copyright (C) The OpenMolcas Authors
+           For the author list and the recommended citation,
+                   consult the file CONTRIBUTORS.md
+
+           *************************************************
+           * pymolcas version py2.06                       *
+           *   build bf02a7b0d12655ada6bc2259076d6962      *
+           *   (after the EMIL interpreter by V. Veryazov) *
+           *************************************************
+
+configuration info
+------------------
+Host name: robb (Linux)
+C Compiler ID: Intel
+C flags: -std=gnu99 -gcc-sys
+Fortran Compiler ID: Intel
+Fortran flags: -fpp -i8 -r8 -heap-arrays
+Definitions: _MOLCAS_;_I8_;_LINUX_
+Parallel: OFF (GA=OFF)
+
+
+   ---------------------------------------------------------------------------------------------
+  |
+  |           Project: caspt2_GS
+  |    Submitted from: /scr/marlenne/_caspt2_GS/Work
+  |      Scratch area: /scr/marlenne/_caspt2_GS/Work
+  |   Save outputs to: /home/marlenne/thymine/Thymine/MOLCAS/3.Ground_State/1.GS_non-planar/try2
+  |            Molcas: /soft/OPENMOLCAS/hdf5_wfa_intel
+  |
+  | Scratch area is empty
+  |
+  |    MOLCAS_DRIVER = /soft/bin/pymolcas
+  |       MOLCAS_FIM = 1
+  |    MOLCAS_MAXMEM = 8000
+  |    MOLCAS_NPROCS = 1
+  |     MOLCAS_PRINT = 3
+  |    MOLCAS_SOURCE = /soft/OPENMOLCAS/hdf5_wfa_intel/
+  | MOLCAS_STRUCTURE = 0
+  |
+   ---------------------------------------------------------------------------------------------
+
+++ ---------   Input file   ---------
+
+&GATEWAY
+    Coord=$HomeDir/mp2.Opt.xyz
+    Basis=6-311G**
+    Group=NoSym
+    RICD
+    CDTH=1.0D-08
+
+>>> COPY $HomeDir/caspt2_2.RasOrb INPORB
+
+>>> DO WHILE
+
+  &SEWARD
+      DoAnal
+
+  &RASSCF
+  Title
+      Thymine 2 ES first bright state
+  spin
+   1
+  Nactel
+   14 0 0
+  Inactive
+   26
+  Ras2
+   10
+  Lumorb
+  CIRoot
+  5 5 1
+  rlxroot=1
+
+  &CASPT2
+  IMAG
+   0.2
+  IPEA
+   0.0
+  xmul=all
+  convergence
+   1.0d-08
+  thresholds
+   1.0d-9 1.0d-07
+  grdt
+  rlxroot=1
+
+  &ALASKA
+
+  &SLAPAF
+
+>>> END DO
+
+&MCKINLEY
+Perturbation
+Hessian
+SHOWHessian
+
+-- ----------------------------------
+
+--- Start Module: gateway at Fri May  5 16:15:08 2023 ---
+ 
+()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()
+
+                                              &GATEWAY
+
+                                   only a single process is used
+                       available to each process: 4.0 GB of memory, 1 thread?
+                                             pid: 14402
+()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()
+ 
+ 
+ 
+ Basis Set     1 Label: N.6-311G**
+ Basis set is read from library:basis_library 
+ Basis Set Reference(s):
+     R. Krishnan, J.S. Binkley, R. Seeger, J.A. Pople. J. Chem. Phys. 72 (1980) 650-654. doi:10.1063/1.438955
+     NITROGEN (11s,5p,1d) -> [4s,3p,1d]
+ 
+ 
+ 
+ 
+ Basis Set     2 Label: C.6-311G**
+ Basis set is read from library:basis_library 
+ Basis Set Reference(s):
+     R. Krishnan, J.S. Binkley, R. Seeger, J.A. Pople. J. Chem. Phys. 72 (1980) 650-654. doi:10.1063/1.438955
+     CARBON (11s,5p,1d) -> [4s,3p,1d]
+ 
+ 
+ 
+ 
+ Basis Set     3 Label: N.6-311G**
+ Basis set is read from library:basis_library 
+ Basis Set Reference(s):
+     R. Krishnan, J.S. Binkley, R. Seeger, J.A. Pople. J. Chem. Phys. 72 (1980) 650-654. doi:10.1063/1.438955
+     NITROGEN (11s,5p,1d) -> [4s,3p,1d]
+ 
+ 
+ 
+ 
+ Basis Set     4 Label: C.6-311G**
+ Basis set is read from library:basis_library 
+ Basis Set Reference(s):
+     R. Krishnan, J.S. Binkley, R. Seeger, J.A. Pople. J. Chem. Phys. 72 (1980) 650-654. doi:10.1063/1.438955
+     CARBON (11s,5p,1d) -> [4s,3p,1d]
+ 
+ 
+ 
+ 
+ Basis Set     5 Label: O.6-311G**
+ Basis set is read from library:basis_library 
+ Basis Set Reference(s):
+     R. Krishnan, J.S. Binkley, R. Seeger, J.A. Pople. J. Chem. Phys. 72 (1980) 650-654. doi:10.1063/1.438955
+     OXYGEN (11s,5p,1d) -> [4s,3p,1d]
+ 
+ 
+ 
+ 
+ Basis Set     6 Label: H.6-311G**
+ Basis set is read from library:basis_library 
+ Basis Set Reference(s):
+     R. Krishnan, J.S. Binkley, R. Seeger, J.A. Pople. J. Chem. Phys. 72 (1980) 650-654. doi:10.1063/1.438955
+     HYDROGEN (5s,1p) -> [3s,1p]
+ 
+ 
+ 
+ 
+ Basis Set     7 Label: C.6-311G**
+ Basis set is read from library:basis_library 
+ Basis Set Reference(s):
+     R. Krishnan, J.S. Binkley, R. Seeger, J.A. Pople. J. Chem. Phys. 72 (1980) 650-654. doi:10.1063/1.438955
+     CARBON (11s,5p,1d) -> [4s,3p,1d]
+ 
+ 
+ 
+ 
+ Basis Set     8 Label: H.6-311G**
+ Basis set is read from library:basis_library 
+ Basis Set Reference(s):
+     R. Krishnan, J.S. Binkley, R. Seeger, J.A. Pople. J. Chem. Phys. 72 (1980) 650-654. doi:10.1063/1.438955
+     HYDROGEN (5s,1p) -> [3s,1p]
+ 
+ 
+ 
+ 
+ Basis Set    10 Label: N.6-311G**....acCD-aux-basis.
+ On-the-fly basis set generation
+ 
+ 
+ Basis Set    11 Label: N.6-311G**....acCD-aux-basis.
+ On-the-fly basis set generation
+ 
+ 
+ Basis Set    12 Label: C.6-311G**....acCD-aux-basis.
+ On-the-fly basis set generation
+ 
+ 
+ Basis Set    13 Label: C.6-311G**....acCD-aux-basis.
+ On-the-fly basis set generation
+ 
+ 
+ Basis Set    14 Label: N.6-311G**....acCD-aux-basis.
+ On-the-fly basis set generation
+ 
+ 
+ Basis Set    15 Label: N.6-311G**....acCD-aux-basis.
+ On-the-fly basis set generation
+ 
+ 
+ Basis Set    16 Label: C.6-311G**....acCD-aux-basis.
+ On-the-fly basis set generation
+ 
+ 
+ Basis Set    17 Label: C.6-311G**....acCD-aux-basis.
+ On-the-fly basis set generation
+ 
+ 
+ Basis Set    18 Label: O.6-311G**....acCD-aux-basis.
+ On-the-fly basis set generation
+ 
+ 
+ Basis Set    19 Label: O.6-311G**....acCD-aux-basis.
+ On-the-fly basis set generation
+ 
+ 
+ Basis Set    20 Label: H.6-311G**....acCD-aux-basis.
+ On-the-fly basis set generation
+ 
+ 
+ Basis Set    21 Label: C.6-311G**....acCD-aux-basis.
+ On-the-fly basis set generation
+ 
+ 
+ Basis Set    22 Label: C.6-311G**....acCD-aux-basis.
+ On-the-fly basis set generation
+ 
+ 
+ Basis Set    23 Label: H.6-311G**....acCD-aux-basis.
+ On-the-fly basis set generation
+ 
+  Weights used for alignment and distance                     
+  mat. size =    15x    1
+       14.0030740044299993
+       12.0000000000000000
+       14.0030740044299993
+       12.0000000000000000
+       12.0000000000000000
+       12.0000000000000000
+       15.9949146195700003
+       15.9949146195700003
+        1.0078250322300000
+        1.0078250322300000
+        1.0078250322300000
+       12.0000000000000000
+        1.0078250322300000
+        1.0078250322300000
+        1.0078250322300000
+ 
+ 
+++    Symmetry information:
+      ---------------------
+ 
+                    Character Table for C1 
+ 
+                             E  
+                    a        1  x, y, xy, Rz, z, xz, Ry, yz, Rx, I
+--
+ 
+ 
+++    Basis set information:
+      ----------------------
+ 
+ 
+      Basis set label: N.6-311G**.........
+ 
+      Electronic valence basis set:
+      ------------------
+      Associated Effective Charge   7.000000 au
+      Associated Actual Charge      7.000000 au
+      Nuclear Model: Point charge
+ 
+      Shell  nPrim  nBasis  Cartesian Spherical Contaminant
+         s      11       4        X                  
+         p       5       3        X                  
+         d       1       1                 X         
+ 
+       Label   Cartesian Coordinates / Bohr
+ 
+ N1                -2.2636129548       -1.8042531695       -0.1927894057
+ 
+ 
+      Basis set label: C.6-311G**.........
+ 
+      Electronic valence basis set:
+      ------------------
+      Associated Effective Charge   6.000000 au
+      Associated Actual Charge      6.000000 au
+      Nuclear Model: Point charge
+ 
+      Shell  nPrim  nBasis  Cartesian Spherical Contaminant
+         s      11       4        X                  
+         p       5       3        X                  
+         d       1       1                 X         
+ 
+       Label   Cartesian Coordinates / Bohr
+ 
+ C2                -2.3415649134        0.7891192428        0.1562844512
+ 
+ 
+      Basis set label: N.6-311G**.........
+ 
+      Electronic valence basis set:
+      ------------------
+      Associated Effective Charge   7.000000 au
+      Associated Actual Charge      7.000000 au
+      Nuclear Model: Point charge
+ 
+      Shell  nPrim  nBasis  Cartesian Spherical Contaminant
+         s      11       4        X                  
+         p       5       3        X                  
+         d       1       1                 X         
+ 
+       Label   Cartesian Coordinates / Bohr
+ 
+ N3                 0.0498431706        1.8576709082        0.1721093579
+ 
+ 
+      Basis set label: C.6-311G**.........
+ 
+      Electronic valence basis set:
+      ------------------
+      Associated Effective Charge   6.000000 au
+      Associated Actual Charge      6.000000 au
+      Nuclear Model: Point charge
+ 
+      Shell  nPrim  nBasis  Cartesian Spherical Contaminant
+         s      11       4        X                  
+         p       5       3        X                  
+         d       1       1                 X         
+ 
+       Label   Cartesian Coordinates / Bohr
+ 
+ C4                 2.3979839529        0.6618195810       -0.1115145716
+ C5                 2.2450790879       -2.0746584270       -0.4674433156
+ C6                -0.0653134891       -3.1738082544       -0.4909193832
+ 
+ 
+      Basis set label: O.6-311G**.........
+ 
+      Electronic valence basis set:
+      ------------------
+      Associated Effective Charge   8.000000 au
+      Associated Actual Charge      8.000000 au
+      Nuclear Model: Point charge
+ 
+      Shell  nPrim  nBasis  Cartesian Spherical Contaminant
+         s      11       4        X                  
+         p       5       3        X                  
+         d       1       1                 X         
+ 
+       Label   Cartesian Coordinates / Bohr
+ 
+ O7                -4.3039318834        1.9862318111        0.4188749731
+ O8                 4.3713109944        1.8877512663       -0.0532532381
+ 
+ 
+      Basis set label: H.6-311G**.........
+ 
+      Electronic valence basis set:
+      ------------------
+      Associated Effective Charge   1.000000 au
+      Associated Actual Charge      1.000000 au
+      Nuclear Model: Point charge
+ 
+      Shell  nPrim  nBasis  Cartesian Spherical Contaminant
+         s       5       3        X                  
+         p       1       1        X                  
+ 
+       Label   Cartesian Coordinates / Bohr
+ 
+ H9                -0.3186456758       -5.1862239217       -0.7452157082
+ H10                0.0973904940        3.7530800629        0.4210918675
+ H11               -3.9638118324       -2.6616540754       -0.2165781852
+ 
+ 
+      Basis set label: C.6-311G**.........
+ 
+      Electronic valence basis set:
+      ------------------
+      Associated Effective Charge   6.000000 au
+      Associated Actual Charge      6.000000 au
+      Nuclear Model: Point charge
+ 
+      Shell  nPrim  nBasis  Cartesian Spherical Contaminant
+         s      11       4        X                  
+         p       5       3        X                  
+         d       1       1                 X         
+ 
+       Label   Cartesian Coordinates / Bohr
+ 
+ C12                4.6689175934       -3.4930898798       -0.7843961559
+ 
+ 
+      Basis set label: H.6-311G**.........
+ 
+      Electronic valence basis set:
+      ------------------
+      Associated Effective Charge   1.000000 au
+      Associated Actual Charge      1.000000 au
+      Nuclear Model: Point charge
+ 
+      Shell  nPrim  nBasis  Cartesian Spherical Contaminant
+         s       5       3        X                  
+         p       1       1        X                  
+ 
+       Label   Cartesian Coordinates / Bohr
+ 
+ H13                5.7047367457       -2.7926636475       -2.4192668422
+ H14                5.8795152472       -3.2265736030        0.8586746758
+ H15                4.3175579993       -5.5050203977       -1.0320327647
+--
+ 
+ 
+++    Molecular structure info:
+      -------------------------
+ 
+                    ************************************************ 
+                    **** Cartesian Coordinates / Bohr, Angstrom **** 
+                    ************************************************ 
+ 
+     Center  Label                x              y              z                     x              y              z
+        1      N1              -2.263613      -1.804253      -0.192789             -1.197852      -0.954770      -0.102020
+        2      C2              -2.341565       0.789119       0.156284             -1.239103       0.417584       0.082702
+        3      N3               0.049843       1.857671       0.172109              0.026376       0.983037       0.091076
+        4      C4               2.397984       0.661820      -0.111515              1.268958       0.350220      -0.059011
+        5      C5               2.245079      -2.074658      -0.467443              1.188045      -1.097862      -0.247360
+        6      C6              -0.065313      -3.173808      -0.490919             -0.034562      -1.679507      -0.259783
+        7      O7              -4.303932       1.986232       0.418875             -2.277543       1.051069       0.221659
+        8      O8               4.371311       1.887751      -0.053253              2.313198       0.998955      -0.028180
+        9      H9              -0.318646      -5.186224      -0.745216             -0.168620      -2.744432      -0.394351
+       10      H10              0.097390       3.753080       0.421092              0.051537       1.986044       0.222832
+       11      H11             -3.963812      -2.661654      -0.216578             -2.097559      -1.408487      -0.114608
+       12      C12              4.668918      -3.493090      -0.784396              2.470685      -1.848464      -0.415085
+       13      H13              5.704737      -2.792664      -2.419267              3.018817      -1.477814      -1.280221
+       14      H14              5.879515      -3.226574       0.858675              3.111305      -1.707429       0.454391
+       15      H15              4.317558      -5.505020      -1.032033              2.284753      -2.913131      -0.546128
+ 
+                    *************************************** 
+                    *    InterNuclear Distances / Bohr    * 
+                    *************************************** 
+ 
+               1 N1            2 C2            3 N3            4 C4            5 C5            6 C6    
+    1 N1       0.000000
+    2 C2       2.617921        0.000000
+    3 N3       4.346829        2.619329        0.000000
+    4 C4       5.274335        4.748815        2.650334        0.000000
+    5 C5       4.525136        5.443121        4.548769        2.763761        0.000000
+    6 C6       2.607122        4.615733        5.076283        4.574257        2.558632        0.000000
+    7 O7       4.347966        2.313637        4.362657        6.852084        7.756670        6.739408
+    8 O8       7.594247        6.805410        4.327445        2.323859        4.515873        6.744967
+    9 H9       3.940279        6.372569        7.112927        6.479295        4.041248        2.044177
+   10 H10      6.069196        3.847556        1.912284        3.890025        6.274121        6.988563
+   11 H11      1.904305        3.831259        6.056798        7.178368        6.241620        3.941555
+   12 C12      7.159759        8.268559        7.133119        4.782592        2.826199        4.754052
+   13 H13      8.332392        9.176361        7.766509        5.309782        4.036629        6.095677
+   14 H14      8.333013        9.176345        7.765693        5.308665        4.036660        6.096325
+   15 H15      7.596830        9.239708        8.594915        6.523958        4.047384        4.993688
+ 
+               7 O7            8 O8            9 H9           10 H10          11 H11          12 C12   
+    7 O7       0.000000
+    8 O8       8.688639        0.000000
+    9 H9       8.287444        8.515611        0.000000
+   10 H10      4.742720        4.687307        9.024661        0.000000
+   11 H11      4.703438        9.497265        4.465439        7.618976        0.000000
+   12 C12     10.582195        5.438436        5.267260        8.652112        8.691244        0.000000
+   13 H13     11.448421        5.411315        6.694230        9.075061        9.917148        2.058232
+   14 H14     11.448553        5.409493        6.695513        9.074140        9.917983        2.058218
+   15 H15     11.513213        7.457478        4.655994       10.277831        8.793792        2.057339
+ 
+              13 H13          14 H14          15 H15   
+   13 H13      0.000000
+   14 H14      3.311152        0.000000
+   15 H15      3.347471        3.347507        0.000000
+ 
+                    ******************************************* 
+                    *    InterNuclear Distances / Angstrom    * 
+                    ******************************************* 
+ 
+               1 N1            2 C2            3 N3            4 C4            5 C5            6 C6    
+    1 N1       0.000000
+    2 C2       1.385344        0.000000
+    3 N3       2.300243        1.386089        0.000000
+    4 C4       2.791058        2.512965        1.402496        0.000000
+    5 C5       2.394599        2.880375        2.407105        1.462520        0.000000
+    6 C6       1.379629        2.442541        2.686253        2.420592        1.353969        0.000000
+    7 O7       2.300845        1.224324        2.308619        3.625967        4.104653        3.566341
+    8 O8       4.018702        3.601268        2.289985        1.229733        2.389697        3.569283
+    9 H9       2.085106        3.372218        3.763999        3.428695        2.138536        1.081732
+   10 H10      3.211680        2.036039        1.011937        2.058512        3.320122        3.698189
+   11 H11      1.007715        2.027415        3.205120        3.798629        3.302923        2.085781
+   12 C12      3.788781        4.375533        3.774684        2.530838        1.495560        2.515736
+   13 H13      4.409312        4.855921        4.109860        2.809816        2.136092        3.225693
+   14 H14      4.409641        4.855912        4.109428        2.809225        2.136108        3.226036
+   15 H15      4.020069        4.889443        4.548233        3.452330        2.141783        2.642546
+ 
+               7 O7            8 O8            9 H9           10 H10          11 H11          12 C12   
+    7 O7       0.000000
+    8 O8       4.597830        0.000000
+    9 H9       4.385527        4.506267        0.000000
+   10 H10      2.509740        2.480416        4.775645        0.000000
+   11 H11      2.488952        5.025736        2.363009        4.031789        0.000000
+   12 C12      5.599857        2.877897        2.787314        4.578500        4.599208        0.000000
+   13 H13      6.058243        2.863544        3.542434        4.802315        5.247929        1.089170
+   14 H14      6.058313        2.862580        3.543113        4.801828        5.248371        1.089162
+   15 H15      6.092530        3.946327        2.463846        5.438794        4.653475        1.088697
+ 
+              13 H13          14 H14          15 H15   
+   13 H13      0.000000
+   14 H14      1.752186        0.000000
+   15 H15      1.771405        1.771425        0.000000
+ 
+                    ************************************** 
+                    *    Valence Bond Angles / Degree    * 
+                    ************************************** 
+                          Atom centers                 Phi
+                      2 C2       1 N1       6 C6       124.11
+                      2 C2       1 N1      11 H11      114.90
+                      6 C6       1 N1      11 H11      120.99
+                      1 N1       2 C2       3 N3       112.19
+                      1 N1       2 C2       7 O7       123.57
+                      3 N3       2 C2       7 O7       124.24
+                      2 C2       3 N3       4 C4       128.62
+                      2 C2       3 N3      10 H10      115.33
+                      4 C4       3 N3      10 H10      116.05
+                      3 N3       4 C4       5 C5       114.30
+                      3 N3       4 C4       8 O8       120.77
+                      5 C5       4 C4       8 O8       124.93
+                      4 C4       5 C5       6 C6       118.46
+                      4 C4       5 C5      12 C12      117.64
+                      6 C6       5 C5      12 C12      123.90
+                      1 N1       6 C6       5 C5       122.32
+                      1 N1       6 C6       9 H9       115.27
+                      5 C5       6 C6       9 H9       122.41
+                      5 C5      12 C12     13 H13      110.48
+                      5 C5      12 C12     14 H14      110.48
+                      5 C5      12 C12     15 H15      110.97
+                     13 H13     12 C12     14 H14      107.10
+                     13 H13     12 C12     15 H15      108.85
+                     14 H14     12 C12     15 H15      108.85
+ 
+           ***************************************************************
+           *              Valence Dihedral Angles / Degree               *
+           ***************************************************************
+                    Atom centers                       Phi1     Phi2     Theta 
+           6 C6       1 N1       2 C2       7 O7        124.11   123.57   180.00
+           2 C2       1 N1       6 C6       5 C5        124.11   122.32    -0.02
+           2 C2       1 N1       6 C6       9 H9        124.11   115.27   180.00
+           3 N3       2 C2       1 N1       6 C6        112.19   124.11     0.00
+           3 N3       2 C2       1 N1      11 H11       112.19   114.90   179.98
+           7 O7       2 C2       1 N1      11 H11       123.57   114.90    -0.02
+           1 N1       2 C2       3 N3       4 C4        112.19   128.62     0.01
+           1 N1       2 C2       3 N3      10 H10       112.19   115.33   179.98
+           7 O7       2 C2       3 N3      10 H10       124.24   115.33    -0.01
+           4 C4       3 N3       2 C2       7 O7        128.62   124.24  -179.98
+           2 C2       3 N3       4 C4       5 C5        128.62   114.30    -0.01
+           2 C2       3 N3       4 C4       8 O8        128.62   120.77   179.98
+           5 C5       4 C4       3 N3      10 H10       114.30   116.05  -179.98
+           8 O8       4 C4       3 N3      10 H10       120.77   116.05     0.02
+           3 N3       4 C4       5 C5       6 C6        114.30   118.46    -0.01
+           3 N3       4 C4       5 C5      12 C12       114.30   117.64  -179.99
+           8 O8       4 C4       5 C5      12 C12       124.93   117.64     0.01
+           6 C6       5 C5       4 C4       8 O8        118.46   124.93   180.00
+           4 C4       5 C5       6 C6       9 H9        118.46   122.41   180.00
+           4 C4       5 C5      12 C12     13 H13       117.64   110.48   -59.21
+           4 C4       5 C5      12 C12     14 H14       117.64   110.48    59.12
+           4 C4       5 C5      12 C12     15 H15       117.64   110.97   179.96
+           6 C6       5 C5      12 C12     13 H13       123.90   110.48   120.80
+           6 C6       5 C5      12 C12     14 H14       123.90   110.48  -120.87
+           6 C6       5 C5      12 C12     15 H15       123.90   110.97    -0.03
+           5 C5       6 C6       1 N1      11 H11       122.32   120.99   180.00
+           9 H9       6 C6       1 N1      11 H11       115.27   120.99     0.02
+           1 N1       6 C6       5 C5       4 C4        122.32   118.46     0.02
+           1 N1       6 C6       5 C5      12 C12       122.32   123.90  -179.99
+           9 H9       6 C6       5 C5      12 C12       122.41   123.90    -0.01
+--
+ 
+ 
+++    Isotope specification:
+      ----------------------
+ 
+ Center
+ Type   Z    A    mass (Da)
+ --------------------------
+    1   7   14    14.003074
+    2   6   12    12.000000
+    3   7   14    14.003074
+    4   6   12    12.000000
+    5   8   16    15.994915
+    6   1    1     1.007825
+    7   6   12    12.000000
+    8   1    1     1.007825
+--
+ 
+ 
+++    Rigid rotor info:
+      -----------------
+ 
+ 
+                    Total mass (a) : 126.04293
+ 
+                    Center of mass 
+                          X          Y   
+                       0.51370   -0.32145   -0.14261
+ 
+                    Reference system based on center of mass
+                    Coordinates and Masses of Atoms, in au and A
+                          X          Y          Z        Mass
+                      -2.77731   -1.48280   -0.05018   14.00307
+                      -2.85526    1.11057    0.29890   12.00000
+                      -0.46385    2.17912    0.31472   14.00307
+                       1.88429    0.98327    0.03110   12.00000
+                       1.73138   -1.75321   -0.32483   12.00000
+                      -0.57901   -2.85236   -0.34831   12.00000
+                      -4.81763    2.30768    0.56149   15.99491
+                       3.85761    2.20920    0.08936   15.99491
+                      -0.83234   -4.86477   -0.60260    1.00783
+                      -0.41631    4.07453    0.56370    1.00783
+                      -4.47751   -2.34020   -0.07397    1.00783
+                       4.15522   -3.17164   -0.64178   12.00000
+                       5.19104   -2.47121   -2.27666    1.00783
+                       5.36582   -2.90512    1.00129    1.00783
+                       3.80386   -5.18357   -0.88942    1.00783
+ 
+                    The Moment of Inertia Tensor / au
+                                     X          Y        Z     
+                    X             0.1190E+07
+                    Y             0.4086E+06 0.2229E+07
+                    Z             0.1696E+06-0.1730E+06 0.3335E+07
+ 
+                    The Principal Axes and Moments of Inertia (au)
+                    Eigenvalues : 0.3367E+07 0.2359E+07 0.1029E+07
+                                     X'         Y'       Z'    
+                    Eigenvectors:
+                    X             0.5240E-01 0.3419E+00 0.9383E+00
+                    Y            -0.1316E+00 0.9337E+00-0.3329E+00
+                    Z             0.9899E+00 0.1060E+00-0.9392E-01
+ 
+                    The Rotational Constants
+                            (cm-1)            (GHz)
+                              0.033            0.977
+                              0.047            1.395
+                              0.107            3.199
+ 
+ 
+                    *******************************************
+                    *                                         *
+                    * R I G I D - R O T O R   A N A L Y S I S *
+                    *                                         *
+                    *******************************************
+ 
+                    j(Max):  5
+ 
+                    Rotor Type: Linear Rotor
+                    Asymmetry parameter: -0.624
+                    Prolate = -1
+                    Oblate  =  1
+ 
+ 
+                    Rotational energies / cm-1
+ 
+                    E(J= 0,kappa= 0) =        0.000
+ 
+                    E(J= 1,kappa=-1) =        0.079
+                    E(J= 1,kappa= 0) =        0.139
+                    E(J= 1,kappa= 1) =        0.153
+ 
+                    E(J= 2,kappa=-2) =        0.235
+                    E(J= 2,kappa=-1) =        0.284
+                    E(J= 2,kappa= 0) =        0.325
+                    E(J= 2,kappa= 1) =        0.506
+                    E(J= 2,kappa= 2) =        0.508
+ 
+                    E(J= 3,kappa=-3) =        0.464
+                    E(J= 3,kappa=-2) =        0.499
+                    E(J= 3,kappa=-1) =        0.582
+                    E(J= 3,kappa= 0) =        0.743
+                    E(J= 3,kappa= 1) =        0.754
+                    E(J= 3,kappa= 2) =        1.080
+                    E(J= 3,kappa= 3) =        1.080
+ 
+                    E(J= 4,kappa=-4) =        0.762
+                    E(J= 4,kappa=-3) =        0.784
+                    E(J= 4,kappa=-2) =        0.921
+                    E(J= 4,kappa=-1) =        1.058
+                    E(J= 4,kappa= 0) =        1.087
+                    E(J= 4,kappa= 1) =        1.400
+                    E(J= 4,kappa= 2) =        1.402
+                    E(J= 4,kappa= 3) =        1.867
+                    E(J= 4,kappa= 4) =        1.867
+ 
+                    E(J= 5,kappa=-5) =        1.124
+                    E(J= 5,kappa=-4) =        1.137
+                    E(J= 5,kappa=-3) =        1.340
+                    E(J= 5,kappa=-2) =        1.449
+                    E(J= 5,kappa=-1) =        1.511
+                    E(J= 5,kappa= 0) =        1.801
+                    E(J= 5,kappa= 1) =        1.807
+                    E(J= 5,kappa= 2) =        2.267
+                    E(J= 5,kappa= 3) =        2.267
+                    E(J= 5,kappa= 4) =        2.867
+                    E(J= 5,kappa= 5) =        2.867
+--
+ 
+ 
+++    Primitive basis info:
+      ---------------------
+ 
+ 
+                    *****************************************************
+                    ******** Primitive Basis Functions (Valence) ********
+                    *****************************************************
+ 
+ 
+ Basis set:N.6-311G**.........                                                             
+ 
+                  Type         
+                   s
+           No.      Exponent    Contraction Coefficients
+            1  0.629348000D+04   0.001970   0.000000   0.000000   0.000000
+            2  0.949044000D+03   0.014961   0.000000   0.000000   0.000000
+            3  0.218776000D+03   0.073501   0.000000   0.000000   0.000000
+            4  0.636916000D+02   0.248937   0.000000   0.000000   0.000000
+            5  0.306331000D+02   0.000000   0.111906   0.000000   0.000000
+            6  0.188282000D+02   0.602460   0.000000   0.000000   0.000000
+            7  0.702614000D+01   0.000000   0.921666   0.000000   0.000000
+            8  0.272023000D+01   0.256202   0.000000   0.000000   0.000000
+            9  0.211205000D+01   0.000000  -0.002569   0.000000   0.000000
+           10  0.684009000D+00   0.000000   0.000000   1.000000   0.000000
+           11  0.200878000D+00   0.000000   0.000000   0.000000   1.000000
+ 
+                  Type         
+                   p
+           No.      Exponent    Contraction Coefficients
+           12  0.306331000D+02   0.038312   0.000000   0.000000
+           13  0.702614000D+01   0.237403   0.000000   0.000000
+           14  0.211205000D+01   0.817592   0.000000   0.000000
+           15  0.684009000D+00   0.000000   1.000000   0.000000
+           16  0.200878000D+00   0.000000   0.000000   1.000000
+ 
+                  Type         
+                   d
+           No.      Exponent    Contraction Coefficients
+           17  0.913000000D+00   1.000000
+ 
+ 
+ Basis set:C.6-311G**.........                                                             
+ 
+                  Type         
+                   s
+           No.      Exponent    Contraction Coefficients
+           18  0.456324000D+04   0.001967   0.000000   0.000000   0.000000
+           19  0.682024000D+03   0.015231   0.000000   0.000000   0.000000
+           20  0.154973000D+03   0.076127   0.000000   0.000000   0.000000
+           21  0.444553000D+02   0.260801   0.000000   0.000000   0.000000
+           22  0.209642000D+02   0.000000   0.114660   0.000000   0.000000
+           23  0.130290000D+02   0.616462   0.000000   0.000000   0.000000
+           24  0.480331000D+01   0.000000   0.919999   0.000000   0.000000
+           25  0.182773000D+01   0.221006   0.000000   0.000000   0.000000
+           26  0.145933000D+01   0.000000  -0.003031   0.000000   0.000000
+           27  0.483456000D+00   0.000000   0.000000   1.000000   0.000000
+           28  0.145585000D+00   0.000000   0.000000   0.000000   1.000000
+ 
+                  Type         
+                   p
+           No.      Exponent    Contraction Coefficients
+           29  0.209642000D+02   0.040249   0.000000   0.000000
+           30  0.480331000D+01   0.237594   0.000000   0.000000
+           31  0.145933000D+01   0.815854   0.000000   0.000000
+           32  0.483456000D+00   0.000000   1.000000   0.000000
+           33  0.145585000D+00   0.000000   0.000000   1.000000
+ 
+                  Type         
+                   d
+           No.      Exponent    Contraction Coefficients
+           34  0.626000000D+00   1.000000
+ 
+ 
+ Basis set:N.6-311G**.........                                                             
+ 
+                  Type         
+                   s
+           No.      Exponent    Contraction Coefficients
+           35  0.629348000D+04   0.001970   0.000000   0.000000   0.000000
+           36  0.949044000D+03   0.014961   0.000000   0.000000   0.000000
+           37  0.218776000D+03   0.073501   0.000000   0.000000   0.000000
+           38  0.636916000D+02   0.248937   0.000000   0.000000   0.000000
+           39  0.306331000D+02   0.000000   0.111906   0.000000   0.000000
+           40  0.188282000D+02   0.602460   0.000000   0.000000   0.000000
+           41  0.702614000D+01   0.000000   0.921666   0.000000   0.000000
+           42  0.272023000D+01   0.256202   0.000000   0.000000   0.000000
+           43  0.211205000D+01   0.000000  -0.002569   0.000000   0.000000
+           44  0.684009000D+00   0.000000   0.000000   1.000000   0.000000
+           45  0.200878000D+00   0.000000   0.000000   0.000000   1.000000
+ 
+                  Type         
+                   p
+           No.      Exponent    Contraction Coefficients
+           46  0.306331000D+02   0.038312   0.000000   0.000000
+           47  0.702614000D+01   0.237403   0.000000   0.000000
+           48  0.211205000D+01   0.817592   0.000000   0.000000
+           49  0.684009000D+00   0.000000   1.000000   0.000000
+           50  0.200878000D+00   0.000000   0.000000   1.000000
+ 
+                  Type         
+                   d
+           No.      Exponent    Contraction Coefficients
+           51  0.913000000D+00   1.000000
+ 
+ 
+ Basis set:C.6-311G**.........                                                             
+ 
+                  Type         
+                   s
+           No.      Exponent    Contraction Coefficients
+           52  0.456324000D+04   0.001967   0.000000   0.000000   0.000000
+           53  0.682024000D+03   0.015231   0.000000   0.000000   0.000000
+           54  0.154973000D+03   0.076127   0.000000   0.000000   0.000000
+           55  0.444553000D+02   0.260801   0.000000   0.000000   0.000000
+           56  0.209642000D+02   0.000000   0.114660   0.000000   0.000000
+           57  0.130290000D+02   0.616462   0.000000   0.000000   0.000000
+           58  0.480331000D+01   0.000000   0.919999   0.000000   0.000000
+           59  0.182773000D+01   0.221006   0.000000   0.000000   0.000000
+           60  0.145933000D+01   0.000000  -0.003031   0.000000   0.000000
+           61  0.483456000D+00   0.000000   0.000000   1.000000   0.000000
+           62  0.145585000D+00   0.000000   0.000000   0.000000   1.000000
+ 
+                  Type         
+                   p
+           No.      Exponent    Contraction Coefficients
+           63  0.209642000D+02   0.040249   0.000000   0.000000
+           64  0.480331000D+01   0.237594   0.000000   0.000000
+           65  0.145933000D+01   0.815854   0.000000   0.000000
+           66  0.483456000D+00   0.000000   1.000000   0.000000
+           67  0.145585000D+00   0.000000   0.000000   1.000000
+ 
+                  Type         
+                   d
+           No.      Exponent    Contraction Coefficients
+           68  0.626000000D+00   1.000000
+ 
+ 
+ Basis set:O.6-311G**.........                                                             
+ 
+                  Type         
+                   s
+           No.      Exponent    Contraction Coefficients
+          103  0.858850000D+04   0.001895   0.000000   0.000000   0.000000
+          104  0.129723000D+04   0.014386   0.000000   0.000000   0.000000
+          105  0.299296000D+03   0.070732   0.000000   0.000000   0.000000
+          106  0.873771000D+02   0.240001   0.000000   0.000000   0.000000
+          107  0.421175000D+02   0.000000   0.113889   0.000000   0.000000
+          108  0.256789000D+02   0.594797   0.000000   0.000000   0.000000
+          109  0.962837000D+01   0.000000   0.920811   0.000000   0.000000
+          110  0.374004000D+01   0.280802   0.000000   0.000000   0.000000
+          111  0.285332000D+01   0.000000  -0.003274   0.000000   0.000000
+          112  0.905661000D+00   0.000000   0.000000   1.000000   0.000000
+          113  0.255611000D+00   0.000000   0.000000   0.000000   1.000000
+ 
+                  Type         
+                   p
+           No.      Exponent    Contraction Coefficients
+          114  0.421175000D+02   0.036511   0.000000   0.000000
+          115  0.962837000D+01   0.237153   0.000000   0.000000
+          116  0.285332000D+01   0.819702   0.000000   0.000000
+          117  0.905661000D+00   0.000000   1.000000   0.000000
+          118  0.255611000D+00   0.000000   0.000000   1.000000
+ 
+                  Type         
+                   d
+           No.      Exponent    Contraction Coefficients
+          119  0.129200000D+01   1.000000
+ 
+ 
+ Basis set:H.6-311G**.........                                                             
+ 
+                  Type         
+                   s
+           No.      Exponent    Contraction Coefficients
+          137  0.338650000D+02   0.025494   0.000000   0.000000
+          138  0.509479000D+01   0.190373   0.000000   0.000000
+          139  0.115879000D+01   0.852161   0.000000   0.000000
+          140  0.325840000D+00   0.000000   1.000000   0.000000
+          141  0.102741000D+00   0.000000   0.000000   1.000000
+ 
+                  Type         
+                   p
+           No.      Exponent    Contraction Coefficients
+          142  0.750000000D+00   1.000000
+ 
+ 
+ Basis set:C.6-311G**.........                                                             
+ 
+                  Type         
+                   s
+           No.      Exponent    Contraction Coefficients
+          155  0.456324000D+04   0.001967   0.000000   0.000000   0.000000
+          156  0.682024000D+03   0.015231   0.000000   0.000000   0.000000
+          157  0.154973000D+03   0.076127   0.000000   0.000000   0.000000
+          158  0.444553000D+02   0.260801   0.000000   0.000000   0.000000
+          159  0.209642000D+02   0.000000   0.114660   0.000000   0.000000
+          160  0.130290000D+02   0.616462   0.000000   0.000000   0.000000
+          161  0.480331000D+01   0.000000   0.919999   0.000000   0.000000
+          162  0.182773000D+01   0.221006   0.000000   0.000000   0.000000
+          163  0.145933000D+01   0.000000  -0.003031   0.000000   0.000000
+          164  0.483456000D+00   0.000000   0.000000   1.000000   0.000000
+          165  0.145585000D+00   0.000000   0.000000   0.000000   1.000000
+ 
+                  Type         
+                   p
+           No.      Exponent    Contraction Coefficients
+          166  0.209642000D+02   0.040249   0.000000   0.000000
+          167  0.480331000D+01   0.237594   0.000000   0.000000
+          168  0.145933000D+01   0.815854   0.000000   0.000000
+          169  0.483456000D+00   0.000000   1.000000   0.000000
+          170  0.145585000D+00   0.000000   0.000000   1.000000
+ 
+                  Type         
+                   d
+           No.      Exponent    Contraction Coefficients
+          171  0.626000000D+00   1.000000
+ 
+ 
+ Basis set:H.6-311G**.........                                                             
+ 
+                  Type         
+                   s
+           No.      Exponent    Contraction Coefficients
+          172  0.338650000D+02   0.025494   0.000000   0.000000
+          173  0.509479000D+01   0.190373   0.000000   0.000000
+          174  0.115879000D+01   0.852161   0.000000   0.000000
+          175  0.325840000D+00   0.000000   1.000000   0.000000
+          176  0.102741000D+00   0.000000   0.000000   1.000000
+ 
+                  Type         
+                   p
+           No.      Exponent    Contraction Coefficients
+          177  0.750000000D+00   1.000000
+ 
+  Number of primitives                                   327
+  Number of basis functions                              198
+ 
+--
+ 
+ 
+++    SO/AO info:
+      -----------
+ 
+                    **************************************************
+                    ********** Petite list Basis Functions ***********
+                    **************************************************
+ 
+ 
+           Basis functions generated by E  
+ 
+ Basis Label        Type   Center
+    1  N1            1s       1
+    2  N1            2s       1
+    3  N1            *s       1
+    4  N1            *s       1
+    5  N1            2px      1
+    6  N1            *px      1
+    7  N1            *px      1
+    8  N1            2py      1
+    9  N1            *py      1
+   10  N1            *py      1
+   11  N1            2pz      1
+   12  N1            *pz      1
+   13  N1            *pz      1
+   14  N1            *d2-     1
+   15  N1            *d1-     1
+   16  N1            *d0      1
+   17  N1            *d1+     1
+   18  N1            *d2+     1
+   19  C2            1s       2
+   20  C2            2s       2
+   21  C2            *s       2
+   22  C2            *s       2
+   23  C2            2px      2
+   24  C2            *px      2
+   25  C2            *px      2
+   26  C2            2py      2
+   27  C2            *py      2
+   28  C2            *py      2
+   29  C2            2pz      2
+   30  C2            *pz      2
+   31  C2            *pz      2
+   32  C2            *d2-     2
+   33  C2            *d1-     2
+   34  C2            *d0      2
+   35  C2            *d1+     2
+   36  C2            *d2+     2
+   37  N3            1s       3
+   38  N3            2s       3
+   39  N3            *s       3
+   40  N3            *s       3
+   41  N3            2px      3
+   42  N3            *px      3
+   43  N3            *px      3
+   44  N3            2py      3
+   45  N3            *py      3
+   46  N3            *py      3
+   47  N3            2pz      3
+   48  N3            *pz      3
+   49  N3            *pz      3
+   50  N3            *d2-     3
+   51  N3            *d1-     3
+   52  N3            *d0      3
+   53  N3            *d1+     3
+   54  N3            *d2+     3
+   55  C4            1s       4
+   56  C4            2s       4
+   57  C4            *s       4
+   58  C4            *s       4
+   59  C4            2px      4
+   60  C4            *px      4
+   61  C4            *px      4
+   62  C4            2py      4
+   63  C4            *py      4
+   64  C4            *py      4
+   65  C4            2pz      4
+   66  C4            *pz      4
+   67  C4            *pz      4
+   68  C4            *d2-     4
+   69  C4            *d1-     4
+   70  C4            *d0      4
+   71  C4            *d1+     4
+   72  C4            *d2+     4
+   73  C5            1s       5
+   74  C5            2s       5
+   75  C5            *s       5
+   76  C5            *s       5
+   77  C5            2px      5
+   78  C5            *px      5
+   79  C5            *px      5
+   80  C5            2py      5
+   81  C5            *py      5
+   82  C5            *py      5
+   83  C5            2pz      5
+   84  C5            *pz      5
+   85  C5            *pz      5
+   86  C5            *d2-     5
+   87  C5            *d1-     5
+   88  C5            *d0      5
+   89  C5            *d1+     5
+   90  C5            *d2+     5
+   91  C6            1s       6
+   92  C6            2s       6
+   93  C6            *s       6
+   94  C6            *s       6
+   95  C6            2px      6
+   96  C6            *px      6
+   97  C6            *px      6
+   98  C6            2py      6
+   99  C6            *py      6
+  100  C6            *py      6
+  101  C6            2pz      6
+  102  C6            *pz      6
+  103  C6            *pz      6
+  104  C6            *d2-     6
+  105  C6            *d1-     6
+  106  C6            *d0      6
+  107  C6            *d1+     6
+  108  C6            *d2+     6
+  109  O7            1s       7
+  110  O7            2s       7
+  111  O7            *s       7
+  112  O7            *s       7
+  113  O7            2px      7
+  114  O7            *px      7
+  115  O7            *px      7
+  116  O7            2py      7
+  117  O7            *py      7
+  118  O7            *py      7
+  119  O7            2pz      7
+  120  O7            *pz      7
+  121  O7            *pz      7
+  122  O7            *d2-     7
+  123  O7            *d1-     7
+  124  O7            *d0      7
+  125  O7            *d1+     7
+  126  O7            *d2+     7
+  127  O8            1s       8
+  128  O8            2s       8
+  129  O8            *s       8
+  130  O8            *s       8
+  131  O8            2px      8
+  132  O8            *px      8
+  133  O8            *px      8
+  134  O8            2py      8
+  135  O8            *py      8
+  136  O8            *py      8
+  137  O8            2pz      8
+  138  O8            *pz      8
+  139  O8            *pz      8
+  140  O8            *d2-     8
+  141  O8            *d1-     8
+  142  O8            *d0      8
+  143  O8            *d1+     8
+  144  O8            *d2+     8
+  145  H9            1s       9
+  146  H9            *s       9
+  147  H9            *s       9
+  148  H9            *px      9
+  149  H9            *py      9
+  150  H9            *pz      9
+  151  H10           1s      10
+  152  H10           *s      10
+  153  H10           *s      10
+  154  H10           *px     10
+  155  H10           *py     10
+  156  H10           *pz     10
+  157  H11           1s      11
+  158  H11           *s      11
+  159  H11           *s      11
+  160  H11           *px     11
+  161  H11           *py     11
+  162  H11           *pz     11
+  163  C12           1s      12
+  164  C12           2s      12
+  165  C12           *s      12
+  166  C12           *s      12
+  167  C12           2px     12
+  168  C12           *px     12
+  169  C12           *px     12
+  170  C12           2py     12
+  171  C12           *py     12
+  172  C12           *py     12
+  173  C12           2pz     12
+  174  C12           *pz     12
+  175  C12           *pz     12
+  176  C12           *d2-    12
+  177  C12           *d1-    12
+  178  C12           *d0     12
+  179  C12           *d1+    12
+  180  C12           *d2+    12
+  181  H13           1s      13
+  182  H13           *s      13
+  183  H13           *s      13
+  184  H13           *px     13
+  185  H13           *py     13
+  186  H13           *pz     13
+  187  H14           1s      14
+  188  H14           *s      14
+  189  H14           *s      14
+  190  H14           *px     14
+  191  H14           *py     14
+  192  H14           *pz     14
+  193  H15           1s      15
+  194  H15           *s      15
+  195  H15           *s      15
+  196  H15           *px     15
+  197  H15           *py     15
+  198  H15           *pz     15
+ 
+      Basis set specifications :
+      Symmetry species        a  
+      Basis functions         198
+--
+ 
+ 
+            Nuclear Potential Energy            438.46157139 au
+ 
+--- Stop Module: gateway at Fri May  5 16:15:08 2023 /rc=_RC_ALL_IS_WELL_ ---
+*** files: caspt2_GS.RICDLib xmldump
+    saved to directory /home/marlenne/thymine/Thymine/MOLCAS/3.Ground_State/1.GS_non-planar/try2
+
+>>> COPY /home/marlenne/thymine/Thymine/MOLCAS/3.Ground_State/1.GS_non-planar/try2/caspt2_2.RasOrb INPORB
+Error: file "/home/marlenne/thymine/Thymine/MOLCAS/3.Ground_State/1.GS_non-planar/try2/caspt2_2.RasOrb" not found
+ EMIL input error
+    Timing: Wall=0.53 User=0.37 System=0.03

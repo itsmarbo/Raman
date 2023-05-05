@@ -1,0 +1,12 @@
+ &gateway
+    coord=$HomeDir/mp2.Opt.xyz
+    basis=6-31G**
+    group=nosymm
+    RICD
+
+
+ &seward
+DoAnal
+
+ &scf
+

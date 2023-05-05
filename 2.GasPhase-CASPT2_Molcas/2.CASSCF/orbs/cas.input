@@ -1,0 +1,33 @@
+ &gateway
+    coord=$HomeDir/mp2.Opt.xyz
+    basis=6-31G**
+    group=nosymm
+    RICD
+
+
+ &seward
+DoAnal
+
+>>>COPY $HomeDir/scf.ScfOrb INPORB
+
+ &RASSCF &END
+Title
+ State Average (SA) CASSCF using Cs Symm.
+Spin
+ 1
+Nactel
+ 14 0 0
+Inactive
+ 26
+Ras2
+ 10
+CiRoot
+ 5 5 1
+Lumorb
+Levs
+ 0.8
+Thrs
+1.0D-06 1.0D-02 1.0D-02
+End of Input
+
+
